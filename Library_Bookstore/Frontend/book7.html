@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+  <head>
+    <title>Online Library | Bookstore</title>
+  </head>
+  <body>
+    <nav>
+      <div class="menu-icon">
+        </div>
+        <div class="logo">Digital Library | Bookstore</div>    
+    </nav>
+    <div id="id01" class="modal">
+        <link rel="stylesheet" href="book7.css" />
+          <div id="book-box">
+            <a href="homepage.html">
+              <img class="arrow" src="../src/images/arrow.png" style="width: 25px; margin-left: 3%; margin-top: 2.5%;">
+            </a>
+              <div class="book-style">
+                
+                <h1>Artificial intelligence</h1>
+                <h2>Chris Baker</h2>
+                <img src="../src/images/book7.jpg">
+                <p>
+                    Artificial intelligence (AI), is intelligence demonstrated by machines, 
+                    unlike the natural intelligence displayed by humans and animals. Leading AI textbooks 
+                    define the field as the study of "intelligent agents": any device that perceives its 
+                    environment and takes actions that maximize its chance of successfully achieving its goals. 
+                    Colloquially, the term "artificial intelligence" is often used to describe machines 
+                    (or computers) that mimic "cognitive" functions that humans associate with the human mind, 
+                    such as "learning" and "problem solving". <br>
+                    <br>
+                    <b> Book price: Rs 3000 </b>
+                </p>
+                <h2 class="book_id">Book ID: AI112</h2>
+              </div>
+              
+            <div class="input-data">
+                <br>
+                <br>
+                <input id="insert_borrow" type="submit" name="borrow" value="Borrow" />
+                <input id="insert_buy" type="submit" name="buy" value="Buy" />
+
+              <a href="borrowBook1.html"></a>
+              <a href="buyBook1.html"></a>
+            </div>
+          </div>
+     </div>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script id="mainScript">
+       var firebaseConfig = {
+        
+  apiKey: "AIzaSyDbVzQPUVGLyntWBnqbsvZ_7rqY3K4ovi0",
+
+  authDomain: "lmsdev-7b9b8.firebaseapp.com",
+
+  databaseURL: "https://lmsdev-7b9b8-default-rtdb.firebaseio.com",
+
+  projectId: "lmsdev-7b9b8",
+  
+  storageBucket: "lmsdev-7b9b8.appspot.com",
+  messagingSenderId: "328860004381",
+  appId: "1:328860004381:web:1c9867f246555ffa7516f4"
+};
+    firebase.initializeApp(firebaseConfig);
+
+    var bookID, bookTITLE, authorNAME, bookPRICE, userEMAIL;
+      
+      function ready() {
+        bookID = "AI112";
+        bookTITLE = "Artificial intelligence";
+        authorNAME = "Chris Baker";
+        bookPRICE = 3000;
+      }
+
+      document.getElementById('insert_borrow').onclick = function () {
+        ready();
+       
+        userEMAIL = prompt("Confirm your email. (exclude '.com')", "e.g. xyz@gmail");
+        for(var i = 0; i < userEMAIL.length; i++)
+        {
+          if(userEMAIL.charAt(i) == '.' && userEMAIL.charAt(i + 1) == 'c' && userEMAIL.charAt(i + 2) == 'o' && userEMAIL.charAt(i + 3) == 'm')
+          {
+            userEMAIL = prompt("Confirm your email. (exclude '.com')", "e.g. xyz@gmail");
+          }
+        }
+        firebase.database().ref('BorrowedBooks/'+userEMAIL+' '+bookID).set({
+          bookId: bookID,
+          bookTitle: bookTITLE,
+          AuthorName: authorNAME,
+          userEmail: userEMAIL
+        });
+        swal({
+          title: "Borrowed!", 
+          text: "You borrowed the book.", 
+          icon: "success"
+        });
+      }
+
+      document.getElementById('insert_buy').onclick = function () {
+        ready();
+        userEMAIL = prompt("Confirm your email. (exclude '.com')", "e.g. xyz@gmail");
+        for(var i = 0; i < userEMAIL.length; i++)
+        {
+          if(userEMAIL.charAt(i) == '.' && userEMAIL.charAt(i + 1) == 'c' && userEMAIL.charAt(i + 2) == 'o' && userEMAIL.charAt(i + 3) == 'm')
+          {
+            userEMAIL = prompt("Confirm your email. (exclude '.com')", "e.g. xyz@gmail");
+          }
+        }
+        firebase.database().ref('BoughtBooks/'+userEMAIL+' '+bookID).set({
+          bookId: bookID,
+          bookTitle: bookTITLE,
+          AuthorName: authorNAME,
+          BookPrice: bookPRICE,
+          userEmail: userEMAIL
+        });
+        swal({
+          title: "Bought!", 
+          text: "Thank you for your purchase!", 
+          icon: "success"
+        });
+      }
+    </script>
+ 
+  </body>
+</html>

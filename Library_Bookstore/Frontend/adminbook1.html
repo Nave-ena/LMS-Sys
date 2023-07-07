@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+  <head>
+    <title>Online Library | Bookstore</title>
+    <style>
+      .preloader{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content:center ;
+          background: #333;
+          
+      }
+      .preloader--hidden{
+        opacity: 0;
+        visibility: hidden;
+      }
+      .preloader::after{
+        content: "";
+        width: 75px;
+        height: 75px;
+        border: 15px solid #dddd;
+        border-top-color: aqua;
+        border-radius: 50%;
+        animation: spin o.75s ease infinite;
+        transition: 0.75s; visibility: o.75s;
+      }
+      @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  </style>
+  </head>
+  <body>
+    <div preloader preloader--hidden></div>
+    <nav>
+      <div class="menu-icon">
+        </div>
+        <div class="logo">Digital Library | Bookstore</div>    
+    </nav>
+
+
+    <div id="id01" class="modal">
+        <link rel="stylesheet" href="adminbook1.css" />
+          <div id="book-box">
+            <a href="adminManageBooks.html">
+              <img class="arrow" src="../src/images/arrow.png" style="width: 25px; margin-left: 3%; margin-top: 2.5%;">
+            </a>
+              <div class="book-style">
+                <h1>Introduction to Database Systems</h1>
+                <h2>C. J. Date</h2>
+                <img src="../src/images/book1.jpg">
+                <p>
+                    A comprehensive, up-to-date treatment of database technology. 
+                    This edition features: updated coverage of object-oriented database 
+                    systems, including a proposal for rapprochement between OO and relational 
+                    technologies; expanded treatment of distributed databases, including client/server 
+                    architectures, with an emphasis on database design issues; a comprehensive 
+                    introduction to all aspects of the relational model - the basis of modern 
+                    database technology; and new chapters on functional dependencies, views, 
+                    domains and missing. <br>
+                    <br>
+                   <b> Book price: Rs 1000 </b>
+                </p>
+                <h2 class="book_id">Book ID: IDBS122</h2>
+              </div>
+            </div>
+          </div>
+     </div>
+  </body>
+</html>

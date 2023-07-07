@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="adminPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Online Library | Bookstore</title>
+    <style>
+      .preloader{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content:center ;
+          background: #333;
+          
+      }
+      .preloader--hidden{
+        opacity: 0;
+        visibility: hidden;
+      }
+      .preloader::after{
+        content: "";
+        width: 75px;
+        height: 75px;
+        border: 15px solid #dddd;
+        border-top-color: aqua;
+        border-radius: 50%;
+        animation: spin o.75s ease infinite;
+        transition: 0.75s; visibility: o.75s;
+      }
+      @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  </style>
+  </head>
+
+  <body>
+    <div class="preloader preloader--hidden"></div>
+    <input type="checkbox" id="check" />
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+
+    <h1 class="hp-text1">Preserving the past, opening the future</h1>
+    <div class="intro">
+      <h6>
+        Digital libraries can vary immensely in size.The digital content/books
+        can be stored locally or on clouds, and can be accessed remotely via
+        computer networks. A library is a platform where you can get
+        different books . You can view the book of your interest. If you
+        the book is upto your taste, then you can avail the option to borrow or
+        even purchase that book.
+      </h6>
+    </div>
+    <div class="sidebar">
+      <!-- <<<<<<< HEAD -->
+      <header>ADMIN PAGE</header>
+      <ul>
+        <li><a href="">Dashboard </a></li>
+        <li><a href="adminManageBooks.html">Books Management </a></li>
+        <li><a href="buyerAndborrower.html">Users Management</a></li>
+        <!-- <button class="joinbtn" onclick="mainApp.logOut()">LOG OUT</button> -->
+
+        <li><a href="admin_Login.html">LogOut</a></li>
+      </ul>
+    </div>
+
+    <section></section>
+  </body>
+</html>
